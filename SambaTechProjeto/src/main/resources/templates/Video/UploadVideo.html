@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org">
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
 		<meta charset="UTF-8"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		
-		<title>	Lista de Videos </title>
+		<title>	Processo Seletivo - Upload </title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
-</head>
+	</head>
 
 <body>
 	<h1> Processo Seletivo Samba Tech - Teste 02</h1>
 	<h2> Upload de vídeo </h2>
+	
+	<br/> <br/>
+	<form method="post">
+		Nome: <input type="text" value="" name="name"/>
+		<br/> <br/>
+		Arquivo: <input type="file" value="" name="file"/>
+		<br/>
+		<button type="submit"> Salvar </button>
+	</form>
 </body>
 
 </html>
