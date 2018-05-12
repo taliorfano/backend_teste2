@@ -5,7 +5,7 @@ import java.io.File;
 /***
  * 	Model de Video
  * @author Talita
- *
+ * 
  */
 public class Video {
 	// Nome do arquivo
