@@ -52,7 +52,7 @@ public class AmazonClient {
        AWSCredentials credentials = new BasicAWSCredentials(this.accessKey, this.secretKey);
        this.client = AmazonS3ClientBuilder.standard().
     		   withCredentials(new AWSStaticCredentialsProvider(credentials)).
-    		   withRegion("sa-east-1").build();
+    		   withRegion("sa-east-1").enableAccelerateMode().build();
     }
     
     /***
@@ -64,12 +64,19 @@ public class AmazonClient {
         String fileUrl = "";
         try {
             File file = convertMultiPartToFile(multipartFile);
-            
             String fileName = generateFileName(multipartFile);
             fileUrl = endpointUrl + "/" + bucketName + "/" + fileName;
             
+            // TODO Colocar mensagem de carregando 
             uploadFileTos3bucket(fileName, file);
+
+            // TODO Retirar mensagem de carregando 
+            
             file.delete();
+            
+            ConvertVideo convert = new ConvertVideo();
+            convert.CreateJob(fileName);
+            
         } catch (Exception e) {
            e.printStackTrace();
         }
@@ -108,6 +115,5 @@ public class AmazonClient {
         fos.close();
         
         return convFile;
-    }
-    
+    }   
 }
