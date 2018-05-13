@@ -74,12 +74,7 @@ public class AmazonClient {
 
             // TODO Retirar mensagem de carregando 
             
-            file.delete();
-            
-            // TODO apagar chamada do Zencoder
-            //ConvertVideo convert = new ConvertVideo();
-            //convert.CreateJob(fileName);
-            
+            file.delete();            
         } catch (Exception e) {
            e.printStackTrace();
         }
