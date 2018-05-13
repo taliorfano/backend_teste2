@@ -68,14 +68,17 @@ public class AmazonClient {
             fileUrl = endpointUrl + "/" + bucketName + "/" + fileName;
             
             // TODO Colocar mensagem de carregando 
+            
+            // TODO Reativar chamada ao bucket
             uploadFileTos3bucket(fileName, file);
 
             // TODO Retirar mensagem de carregando 
             
             file.delete();
             
-            ConvertVideo convert = new ConvertVideo();
-            convert.CreateJob(fileName);
+            // TODO apagar chamada do Zencoder
+            //ConvertVideo convert = new ConvertVideo();
+            //convert.CreateJob(fileName);
             
         } catch (Exception e) {
            e.printStackTrace();

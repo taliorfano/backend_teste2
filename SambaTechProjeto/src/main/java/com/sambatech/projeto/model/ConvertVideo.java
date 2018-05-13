@@ -30,12 +30,12 @@ public class ConvertVideo {
 	public void CreateJob(String id) throws InterruptedException {
 		try {
 			ZencoderCreateJobRequest job = new ZencoderCreateJobRequest();
-			//job.setInput("s3://zencodertesting/test.mov");
+			job.setInput("s3://zencodertesting/test.mov");
 			
-			String urlvideo =  "s3://sambanoconvertedvideo.s3-sa-east-1.amazonaws.com/sambanoconvertedvideo/"+
+			/*String urlvideo =  "s3://sambanoconvertedvideo.s3-sa-east-1.amazonaws.com/sambanoconvertedvideo/"+
 					id+"-exemplo.dv";
 			
-			job.setInput(urlvideo);
+			job.setInput(urlvideo);*/
 			
 			List<ZencoderOutput> outputs = new ArrayList<ZencoderOutput>();
 			
@@ -66,13 +66,15 @@ public class ConvertVideo {
 	            if (inputProgress.getState().equals(State.FINISHED) &&
 	            	outputProgress1.getState().equals(State.FINISHED) && 
 	            	outputProgress2.getState().equals(State.FINISHED) ) { 
+	            	
 	            	ready = true; 
 	            } 
-	            Thread.sleep(1000);
+	            //Thread.sleep(100);
 	            // Colocar alguma mensagem
 	        }
 			
 			if(ready){
+				System.out.println("Output1: "+response.getOutputs().get(0).getUrl());
 				// Salva na S3 no bucket de videos convertidos
 			}
 			
@@ -81,6 +83,7 @@ public class ConvertVideo {
 			// TODO
 			e.printStackTrace();
 		}
+		
 	}
 	
 	public void SearchJog() {
