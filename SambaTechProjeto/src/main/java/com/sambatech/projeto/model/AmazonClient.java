@@ -15,7 +15,10 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.GetObjectRequest;
+import com.amazonaws.services.s3.model.ListObjectsV2Request;
+import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 /***
  * 
@@ -52,7 +55,7 @@ public class AmazonClient {
        AWSCredentials credentials = new BasicAWSCredentials(this.accessKey, this.secretKey);
        this.client = AmazonS3ClientBuilder.standard().
     		   withCredentials(new AWSStaticCredentialsProvider(credentials)).
-    		   withRegion("us-east-1").enableAccelerateMode().build();
+    		   withRegion("us-east-1").build();
        //enableAccelerateMode().
     }
     
@@ -78,6 +81,30 @@ public class AmazonClient {
         }
         return fileUrl;
     }
+    
+    /***
+     * 
+     * @return
+     */
+    public File readFile() {
+    	// Le arquivos da s3
+    	
+    	ListObjectsV2Request req = new ListObjectsV2Request().withBucketName(bucketName);
+    	ListObjectsV2Result listing = client.listObjectsV2(req);
+    	
+    	for (String commonPrefix : listing.getCommonPrefixes()) {
+    	        System.out.println(commonPrefix);
+    	}
+    	for (S3ObjectSummary summary: listing.getObjectSummaries()) {
+    	    System.out.println(summary.getKey());
+    	}
+    	
+    	listing.toString();
+    	
+    	return null;
+    }
+    
+    
     
     /***
      * Constroi nome do arquivo para armazenar no bucket

@@ -18,22 +18,21 @@ import com.sambatech.projeto.model.AmazonClient;
  *
  */
 
-// @RestController
-// @RequestMapping("/storage/")
+@RestController
+@RequestMapping("/storage/")
 public class BucketController {
 
     private AmazonClient amazonClient;
 
-   /* @Autowired
+    @Autowired
     BucketController(AmazonClient amazonClient) {
         this.amazonClient = amazonClient;
     }
 
-    @PostMapping("/upload")
+    /*@PostMapping("/upload")
     public String uploadFile(@RequestPart(value = "file") MultipartFile file) {
         //this.amazonClient.uploadFile(file);
-        
-        
+
     	return "";
     }*/
 }

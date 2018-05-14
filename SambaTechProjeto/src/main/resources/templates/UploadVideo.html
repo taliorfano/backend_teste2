@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>	Processo Seletivo - Upload </title>
+		
+		<!--Import Google Icon Font-->
+      	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      	<!--Import materialize.css-->
+      	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      	<!--Let browser know website is optimized for mobile-->
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+
+	<body>
+	<h5 class="center"> Processo Seletivo SambaTech - Teste 02</h5>
+	<br/>
+	<nav>
+	    <div class="nav-wrapper">
+	      <ul id="nav-mobile" class="left hide-on-med-and-down">
+	        <li><a href="/">Instruções</a></li>
+        <li><a href="/upload">Upload Vídeo</a></li>
+        <li><a href="/videos">Visualizar Vídeos</a></li>
+	      </ul>
+	    </div>
+  	</nav>
+	
+	 <form class="container" method="post" action="" enctype="multipart/form-data">
+	 
+    	<div class="file-field input-field">
+      	<div class="btn-small">
+        	<span> <i class="material-icons left"> add_circle_outline </i> Adicionar vídeo </span>
+        	<input type="file" name="fileVideo">
+      	</div>
+      	<div class="file-path-wrapper">
+	        <input class="file-path validate" type="text" placeholder="Arquivo para conversão">
+    	  </div>
+    	</div>
+    	<div class="input-field col s6">
+          <input id="name" name="nome" type="text" class="validate">
+          <label for="name"> Título do vídeo </label>
+        </div>
+        
+        <button class="waves-effect waves-light btn-large right" type="submit">
+        <i class="material-icons left">  video_call  </i>
+        	Converter
+        </button>
+  </form>
+  
+  <div class="center" >
+  
+<!--	<iframe width="300" height="150"
+		src="https://s3.amazonaws.com/inputs-videos/outputs/padrepaulo-hls-low_001.mp4" frameborder="0" allowfullscreen>
+	</iframe> -->
+
+  </div>
+	
+	 <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>
