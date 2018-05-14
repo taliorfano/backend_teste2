@@ -15,24 +15,30 @@ xmlns:th="http://www.thymeleaf.org">
 </head>
 
 <body>
-	<h4> Processo Seletivo SambaTech - Teste 02</h4>
-	
+	<h4 class="center"> Processo Seletivo SambaTech - Teste 02</h4>
 	<br/>
 	<br/>
 	
-	 <form class="container" method="post">
+	
+	 <form class="container" method="post" action="" enctype="multipart/form-data">
+	 	<div>
+	 		<p>
+				TO DO
+			</p>
+	 	</div>
+	 
     	<div class="file-field input-field">
       	<div class="btn-small">
         	<span> <i class="material-icons left"> add_circle_outline </i> Adicionar vídeo </span>
-        	<input type="file" id="file_video">
+        	<input type="file" name="fileVideo">
       	</div>
       	<div class="file-path-wrapper">
 	        <input class="file-path validate" type="text" placeholder="Arquivo para conversão">
     	  </div>
     	</div>
     	<div class="input-field col s6">
-          <input id="name_video" type="text" class="validate">
-          <label for="name_video"> Título do vídeo </label>
+          <input id="name" name="nome" type="text" class="validate">
+          <label for="name"> Título do vídeo </label>
         </div>
         
         <button class="waves-effect waves-light btn-large right" type="submit">

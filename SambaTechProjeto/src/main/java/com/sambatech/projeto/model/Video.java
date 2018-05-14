@@ -2,6 +2,8 @@ package com.sambatech.projeto.model;
 
 import java.io.File;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /***
  * 	Model de Video
  * @author Talita
@@ -12,7 +14,20 @@ public class Video {
 	private String name;
 	
 	// Arquivo de video
-	private File file;
+	private File fileVideo;
+	
+	// Arquivo de video
+	private MultipartFile multipartFile;
+	
+	/**
+	 * Contrutor
+	 * @param name Nome do video
+	 * @param multipartFile Arquivo
+	 */
+	public Video(String name, MultipartFile multipartFile) {
+		this.name = name;
+		this.multipartFile = multipartFile;
+	}
 
 	public String getName() {
 		return name;
@@ -23,10 +38,18 @@ public class Video {
 	}
 
 	public File getFile() {
-		return file;
+		return fileVideo;
 	}
 
-	public void setFile(File file) {
-		this.file = file;
+	public void setFile(File fileVideo) {
+		this.fileVideo = fileVideo;
+	}
+
+	public MultipartFile getMultipartFile() {
+		return multipartFile;
+	}
+
+	public void setMultipartFile(MultipartFile multipartFile) {
+		this.multipartFile = multipartFile;
 	}
 }

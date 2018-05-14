@@ -52,7 +52,8 @@ public class AmazonClient {
        AWSCredentials credentials = new BasicAWSCredentials(this.accessKey, this.secretKey);
        this.client = AmazonS3ClientBuilder.standard().
     		   withCredentials(new AWSStaticCredentialsProvider(credentials)).
-    		   withRegion("sa-east-1").enableAccelerateMode().build();
+    		   withRegion("us-east-1").enableAccelerateMode().build();
+       //enableAccelerateMode().
     }
     
     /***
@@ -60,19 +61,16 @@ public class AmazonClient {
      * @param multipartFile: Arquivo a ser armazenado
      * @return: URL do arquivo na Amazon
      */
-    public String uploadFile(MultipartFile multipartFile) {
+    public String uploadFile(Video video) {
+    	MultipartFile multipartFile = video.getMultipartFile();
         String fileUrl = "";
+        
         try {
             File file = convertMultiPartToFile(multipartFile);
-            String fileName = generateFileName(multipartFile);
+            String fileName = generateFileName(multipartFile, video.getName());
             fileUrl = endpointUrl + "/" + bucketName + "/" + fileName;
             
-            // TODO Colocar mensagem de carregando 
-            
-            // TODO Reativar chamada ao bucket
             uploadFileTos3bucket(fileName, file);
-
-            // TODO Retirar mensagem de carregando 
             
             file.delete();            
         } catch (Exception e) {
@@ -86,8 +84,8 @@ public class AmazonClient {
      * @param multiPart: Arquivo
      * @return nome do arquivo
      */
-    private String generateFileName(MultipartFile multiPart) {
-        return new Date().getTime() + "-" + multiPart.getOriginalFilename().replace(" ", "_");
+    private String generateFileName(MultipartFile multiPart, String name) {
+        return new Date().getTime() + "-" + name.replace(" ", "_");
     }
     
     /***
