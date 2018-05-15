@@ -30,6 +30,9 @@ public class UploadController {
 	// Caminho do arquivo convertido na Amazon
 	private String pathOutput="";
 	
+	// Barra de progresso
+	private boolean progress = true;
+	
 	@Autowired
 	UploadController(AmazonClient amazonClient) {
 	    this.amazonClient = amazonClient;
@@ -39,6 +42,7 @@ public class UploadController {
 	public String form() {
 		this.pathInput="";
 		this.pathOutput="";
+		this.progress=false;
 		return "UploadVideo";
 	}
 	
@@ -46,22 +50,22 @@ public class UploadController {
 	public String form(
 			@RequestParam("nome") String name,
 			@RequestParam("fileVideo") MultipartFile file, 
-			Map<String, Object> model) {
+			Map<String, Object> model) throws InterruptedException {
 
-	    // Ativar um carregando
-		
+		// Ativar um carregando
+		this.progress=true;
+		model.put("progress", progress);
+				
 	    Video video = new Video(name, file);
 	    String fileName = Util.GenerateFileName(video.getName());
 	    	
-	    this.amazonClient.uploadFile(video, fileName);
+	    //this.amazonClient.uploadFile(video, fileName);
 		
 		this.pathInput="https://s3.amazonaws.com/inputs-videos/inputs/"+fileName;
 		this.pathOutput="https://s3.amazonaws.com/inputs-videos/outputs/"+fileName+"-hls-low_001.mp4";
 	    
 	    model.put("input", this.pathInput);
 	    model.put("output", this.pathOutput);
-	    
-	    // Desativar um carregando
 	    
 		return "UploadVideo";
 	}

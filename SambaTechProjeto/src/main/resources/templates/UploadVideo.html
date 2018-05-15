@@ -43,19 +43,31 @@ xmlns:th="http://www.thymeleaf.org">
           <label for="name"> Título do vídeo </label>
         </div>
         
-        <button class="waves-effect waves-light btn-large right" type="submit">
+        <br />
+        
+        <!-- 
+        <div class="progress" th:style="${progress} ? 'display:block' : 'display:none'" >>
+      		<div class="indeterminate"></div>
+  	 	</div>
+  	 	 -->
+        
+        <br />
+        
+        <button class="waves-effect waves-light btn-large right" type="submit" id="converte">
         <i class="material-icons left">  video_call  </i>
         	Converter
         </button>
         
   	 <br />
+  	 
+  	 <p> O processo de armazenamento do vídeo pode demorar até 20 minutos, aguarde!</p>
+  	 
   	 <br />
   	 <br />
   	 
 	 <p class="center"> 
 	 	<b> Resultado de saída </b> 
 	 </p>
-	 <br />
 	 <p>
 	 	<b> Arquivo original:   </b> <span th:text="${input}"></span>
 	 	<br />
@@ -63,12 +75,8 @@ xmlns:th="http://www.thymeleaf.org">
 	 	<b> Arquivo convertido: </b> <span th:text="${output}"></span>
 	 </p>
 	 
-  </form>
-  
-  
-	
-	 
-   		<!--JavaScript at end of body for optimized loading-->
-   		<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-	</body>
+   </form>
+   <!--JavaScript at end of body for optimized loading-->
+   <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+   </body>
 </html>
