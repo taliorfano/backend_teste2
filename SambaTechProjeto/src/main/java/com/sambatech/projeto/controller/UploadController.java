@@ -59,9 +59,11 @@ public class UploadController {
 	    Video video = new Video(name, file);
 	    String fileName = Util.GenerateFileName(video.getName());
 	    	
-	    //this.amazonClient.uploadFile(video, fileName);
+	    this.amazonClient.uploadFile(video, fileName);
 		
 		this.pathInput="https://s3.amazonaws.com/inputs-videos/inputs/"+fileName;
+		//this.pathOutput="https://s3.amazonaws.com/inputs-videos/outputs/"+fileName+"-hls-low_001.mp4";
+		
 		this.pathOutput="https://s3.amazonaws.com/inputs-videos/outputs/"+fileName+"-hls-low_001.mp4";
 	    
 	    model.put("input", this.pathInput);
