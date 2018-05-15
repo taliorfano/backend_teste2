@@ -26,7 +26,9 @@ public class VideoController {
     
 	@RequestMapping("/videos")
 	public String listar() {
-		amazonClient.readFile();
+		// A listagem de todos videos armazenados em um bucket na Amazon esta com problema
+		//amazonClient.read();
+		
 		return "ListaVideos";
 	}
 }
